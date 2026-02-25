@@ -16,67 +16,75 @@ Ghibili List é uma aplicação que permite aos usuários visualizar uma lista d
 - **Tailwind CSS 4** - Framework CSS utilitário
 - **ESLint** - Linter para código JavaScript/TypeScript
 
-## React Compiler
+## 📋 Pré-requisitos
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- Node.js (versão 16 ou superior)
+- npm ou yarn
 
-## Expanding the ESLint configuration
+## 🚀 Como Executar
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Instalação
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Desenvolvimento
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev
 ```
+
+A aplicação estará disponível em `http://localhost:5173` (padrão do Vite).
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview de Produção
+
+```bash
+npm run preview
+```
+
+### Linter
+
+```bash
+npm run lint
+```
+
+## 📁 Estrutura do Projeto
+
+```
+src/
+├── components/
+│   └── Films/          # Componente de Filmes
+├── hooks/
+│   ├── useFilms.ts     # Hook para buscar lista de filmes
+│   └── useFilmDetails.ts # Hook para detalhes do filme
+├── pages/
+│   ├── FilmsDetails/   # Página de detalhes do filme
+│   └── homePage/       # Página inicial
+├── routes/
+│   └── index.tsx       # Configuração de rotas
+├── styles/
+│   └── globals.css     # Estilos globais
+├── types/
+│   └── types.ts        # Definições de tipos TypeScript
+├── App.tsx             # Componente raiz
+└── main.tsx            # Ponto de entrada
+```
+
+## 🔄 Fluxo de Dados
+
+A aplicação utiliza:
+
+- **React Query** para gerenciar requisições e cache de dados da API Ghibli
+- **React Router** para navegação entre páginas
+- **Hooks customizados** (`useFilms`, `useFilmDetails`) para abstrair a lógica de busca de dados
+
+## 📝 Licença
+
+Este projeto é de uso livre.
